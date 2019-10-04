@@ -1,7 +1,3 @@
-"""
-Version: 1.0
-Author: Guannan
-"""
 # -*- coding: utf-8 -*-
 import pandas as pd
 import networkx as nx
