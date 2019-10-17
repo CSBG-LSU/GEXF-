@@ -20,9 +20,9 @@ def HIC_network(intercontacts, intracontacts,bias, output):
     all_contacts = intrachromosomal_contacts.append(interchromosomal_contacts, ignore_index=True)
     all_contacts['InteractorA'] = all_contacts[['chr1', 'chunk1_start', 'chunk1_end']].astype(str).apply('-'.join, 1)
     all_contacts['InteractorB'] = all_contacts[['chr2', 'chunk2_start', 'chunk2_end']].astype(str).apply('-'.join, 1)
-    all_contacts['p-value'] = all_contacts['p-value'].apply(np.log)
+    all_contacts['p-value'] = all_contacts['p-value'].apply(np.log10)
     all_contacts['p-value'] = - all_contacts['p-value']
-    all_contacts['q-value'] = all_contacts['q-value'].apply(np.log)
+    all_contacts['q-value'] = all_contacts['q-value'].apply(np.log10)
     all_contacts['q-value'] = - all_contacts['q-value']
     m = all_contacts.loc[all_contacts['p-value'] != np.inf, 'p-value'].max()
     n = all_contacts.loc[all_contacts['q-value'] != np.inf, 'q-value'].max()
